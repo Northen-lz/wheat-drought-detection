@@ -1,0 +1,135 @@
+主线 1：分类模型训练主线
+XYWheatCW.npy + YWheatCW.npy
+→ 上采样成图像
+→ data/wheat_drought_data_upsampled/
+→ train_classifier.py
+→ results.csv / results.png / confusion_matrix.png / best.onnx
+
+主线 2：系统检测运行主线
+田间RGB图像 / 摄像头图片
+→ best.pt 检测小麦
+→ 裁剪单株图像
+→ best.onnx 分类 drought/control
+→ 检测结果图 + prediction_log.csv
+
+
+1. app.py
+
+加载小麦检测模型 best.pt
+加载干旱分类 ONNX 模型 best.onnx
+对上传图像或摄像头图像执行：
+小麦检测
+裁剪单株
+干旱/正常分类
+绘制结果框
+记录检测日志
+展示训练结果，比如 results.png、confusion_matrix.png、results.csv
+它的整体逻辑是：
+输入图像 → 检测小麦 → 裁剪小麦 → ONNX分类 → 结果展示 → 日志记录
+从代码看，process_image_with_detection() 是核心推理函数，而界面层主要分成“检测模式”和“训练数据查看”两部分。
+
+2. prepare_dataset.py
+
+这是数据集构建脚本，作用非常关键。
+它主要做这些事：
+读取原始荧光特征：
+XYWheatCW.npy
+YWheatCW.npy
+输出数据集形状和类别分布
+把 32 维荧光特征重构成 4×8
+上采样为 32×32
+生成预览图 upsampled_samples.png
+划分 train/val
+保存为图像分类数据集目录
+它解决的问题是：
+把原本不能直接送进图像分类模型的 32 维特征，转成可训练的图像形式。
+数据集共有 17328 个样本，正常与干旱两类基本均衡。
+
+3. train_classifier.py
+
+这是分类模型训练脚本。
+
+主要作用：
+
+以 yolov8n-cls.pt 为初始模型
+使用你生成好的分类数据集进行训练
+开启 augment=True
+保存训练结果到 wheat_drought_runs/...
+导出 ONNX 模型
+
+它本质上是把你准备好的荧光特征图像数据，训练成一个可以区分：
+
+control
+drought
+的分类模型。
+而且这里的 augment=True 说明训练阶段已经启用了框架内置增强，只是当前没有把增强细节展开到你自己的数据准备脚本里。
+
+4. test_onnx.py
+
+这是单张 ONNX 测试脚本。
+
+作用是：
+
+加载 best.onnx
+读取一张测试图片
+执行 ONNX 推理
+输出分类结果
+也就是说，它不负责检测，只负责验证：
+这个 ONNX 分类模型能不能正常读图并输出结果
+
+5. test_infer.py
+
+这是整条推理链路测速脚本。
+
+主要作用：
+
+调用推理函数
+重复运行若干次
+计算平均处理时间
+输出 ONNX 模型体积
+
+它更偏系统性能测试，不是训练代码。
+
+6. utils/config.py
+
+这是统一路径配置文件。
+
+作用是把原来写死的绝对路径集中管理，例如：
+
+模型路径
+数据路径
+输出路径
+日志路径
+
+这样以后改目录，不用到处改代码。
+
+7. utils/inference.py
+
+这是推理逻辑模块。
+
+作用是把原来写在 app.py 里的核心推理逻辑拆出来，包括：
+
+加载检测模型和分类模型
+图像预处理
+检测小麦
+裁剪小麦
+分类 drought/control
+返回结果图和统计信息
+
+这样做的好处是：
+
+app.py 只负责界面
+test_infer.py 可以直接复用推理函数
+不会再因为导入 app.py 引发 Streamlit 上下文警告
+8. utils/dashboard.py
+
+这是界面样式和统计模块。
+
+作用是：
+
+给大屏设置 CSS 风格
+构建顶部统计卡片
+处理日志汇总
+封装一些展示函数
+
+它只负责“怎么展示”，不负责模型推理。
