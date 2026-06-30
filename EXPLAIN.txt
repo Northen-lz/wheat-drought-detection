@@ -13,6 +13,7 @@ XYWheatCW.npy + YWheatCW.npy
 → 检测结果图 + prediction_log.csv
 
 ***后缀文件文体不变，具体文件可看后缀名
+***labelimg文件夹内容过大，只放示例
 1. app.py
 
 加载小麦检测模型 best.pt
