@@ -36,6 +36,9 @@ app_sidebar_agri_ui_fixed_path_recommend
 
 ## 检测效果
 <img width="994" height="479" alt="image" src="https://github.com/user-attachments/assets/1c5d1857-c2b5-40c0-a64f-e933c6267ae2" />
+<img width="561" height="260" alt="image" src="https://github.com/user-attachments/assets/1bfb908f-1e21-41bd-8bd2-92985e4b0a02" />
+<img width="473" height="117" alt="image" src="https://github.com/user-attachments/assets/60bf25bd-678d-41ab-b696-ee20c795facd" />
+<img width="331" height="237" alt="image" src="https://github.com/user-attachments/assets/79832947-e1f5-4088-9314-b197b4e933cd" />
 
 ## 作者
 luo
