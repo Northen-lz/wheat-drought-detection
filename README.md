@@ -3,11 +3,6 @@
 ## 项目简介
 <img width="894" height="449" alt="image" src="https://github.com/user-attachments/assets/31a98dd0-8eb5-4122-878b-8bd024e579d3" />
 
-## 数据集下载 （未处理）
-荧光特征数据集:Automatic Water Stress detection in wheat crop canopy using Chlorophyll fluorescence 
-                                      image dataset
-小麦数据集:Global Wheat Head Dataset
-
 ## 功能特点
 - 🌾 小麦目标检测（YOLOv8s/8n/11n/10n）
 - 🍃 干旱分类识别（YOLOv8-clsyolov8n-cls/yolov8s-cls/baseline SVM/optimized SVM）
@@ -37,8 +32,14 @@ app_sidebar_agri_ui_fixed_path_recommend
 ## 检测效果
 <img width="994" height="479" alt="image" src="https://github.com/user-attachments/assets/1c5d1857-c2b5-40c0-a64f-e933c6267ae2" />
 <img width="561" height="260" alt="image" src="https://github.com/user-attachments/assets/1bfb908f-1e21-41bd-8bd2-92985e4b0a02" />
-<img width="473" height="117" alt="image" src="https://github.com/user-attachments/assets/60bf25bd-678d-41ab-b696-ee20c795facd" />
 <img width="331" height="237" alt="image" src="https://github.com/user-attachments/assets/79832947-e1f5-4088-9314-b197b4e933cd" />
+<img width="473" height="117" alt="image" src="https://github.com/user-attachments/assets/60bf25bd-678d-41ab-b696-ee20c795facd" />
+
+## 数据模型下载
+（原始）荧光特征数据集:Automatic Water Stress detection in wheat crop canopy using Chlorophyll fluorescence image dataset
+（原始）小麦数据集:Global Wheat Head Dataset
+模型『来自123云盘用户13227329877的分享』models.zip链接: https://1815678163.share.123pan.cn/123pan/0egzVv-uahMA
+复制这段内容打开「123云盘APP 即可获取」
 
 ## 作者
 luo
