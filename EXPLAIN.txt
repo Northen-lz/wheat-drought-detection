@@ -12,7 +12,7 @@ XYWheatCW.npy + YWheatCW.npy
 → best.onnx 分类 drought/control
 → 检测结果图 + prediction_log.csv
 
-
+***后缀文件文体不变，具体文件可看后缀名
 1. app.py
 
 加载小麦检测模型 best.pt
