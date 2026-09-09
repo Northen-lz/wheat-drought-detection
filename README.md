@@ -35,11 +35,7 @@ app_sidebar_agri_ui_fixed_path_recommend
 <img width="331" height="237" alt="image" src="https://github.com/user-attachments/assets/79832947-e1f5-4088-9314-b197b4e933cd" />
 <img width="473" height="117" alt="image" src="https://github.com/user-attachments/assets/60bf25bd-678d-41ab-b696-ee20c795facd" />
 
-## 数据模型下载
-（原始）荧光特征数据集:Automatic Water Stress detection in wheat crop canopy using Chlorophyll fluorescence image dataset
-（原始）小麦数据集:Global Wheat Head Dataset
-模型『来自123云盘用户13227329877的分享』models.zip链接: https://1815678163.share.123pan.cn/123pan/0egzVv-uahMA
-复制这段内容打开「123云盘APP 即可获取」
+
 
 ## 作者
 luo
